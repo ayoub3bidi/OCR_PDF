@@ -1,0 +1,21 @@
+{
+  "name": "OCR_PDF",
+  "version": "1.0.0",
+  "description": "OCR (optical character recognition) that can recognize an image and extract all the text from it.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Ayoub Abidi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "multer": "^1.4.4",
+    "tesseract.js": "^2.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

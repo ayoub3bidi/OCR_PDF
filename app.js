@@ -35,11 +35,16 @@ app.post('/upload', (req,res) => {
                     console.log(progress);
                 })
                 .then(result => {
-                    res.send(result.text);
+                    res.redirect('/download');
                 })
                 .finally(() => worker.terminate());
         });
     });
+});
+
+app.get('download', (req, res) => {
+    const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
+    res.download(file);
 });
 
 // Start our server

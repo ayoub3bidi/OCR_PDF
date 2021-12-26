@@ -26,10 +26,21 @@ app.get('/', (req,res) => {
 
 app.post('/upload', (req,res) => {
     upload(req,res, err => {
-        console.log(req.file);
-    })
-}
-);
+        fs.readFile(`/uploads/${req.file.originalname}`, (err, data) => {
+            if(err) return console.log('Error', err);
+
+            worker
+                .recognize(data, "eng", {tessjs_create_pdf: '1'})
+                .progress(progress => {
+                    console.log(progress);
+                })
+                .then(result => {
+                    res.send(result.text);
+                })
+                .finally(() => worker.terminate());
+        });
+    });
+});
 
 // Start our server
 const PORT = 5000 || process.env.PORT;

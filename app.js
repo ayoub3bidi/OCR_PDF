@@ -16,3 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage}).single("avatar");
 app.set("view engine", "ejs");
+
+// Start our server
+const PORT = 5000 || process.env.PORT;
+app.listen(PORT, () => console.log('im running dude'));
